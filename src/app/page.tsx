@@ -1,5 +1,5 @@
 "use client"
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CommercePulseLogo } from "@/components/logo";
