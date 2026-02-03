@@ -1,0 +1,16 @@
+# Settings to manage and configure a Firebase App Hosting backend.
+# https://firebase.google.com/docs/app-hosting/configure
+
+runConfig:
+  # Increase this value if you'd like to automatically spin up
+  # more instances in response to increased traffic.
+  maxInstances: 2
+  # Next.js 15+ may require more memory for build/runtime
+  memory: 1Gi
+
+env:
+  - variable: NEXT_PUBLIC_N8N_WEBHOOK_URL
+    availability: [BUILD, RUNTIME]
+  - variable: GOOGLE_GENAI_API_KEY
+    availability: [RUNTIME]
+    secret: GOOGLE_GENAI_API_KEY

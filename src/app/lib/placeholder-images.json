@@ -1,0 +1,23 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-dashboard",
+      "description": "Clean and modern e-commerce dashboard interface",
+      "imageUrl": "https://picsum.photos/seed/123/1200/800",
+      "imageHint": "dashboard analytics"
+    },
+    {
+      "id": "profile-avatar",
+      "description": "Generic user profile avatar",
+      "imageUrl": "https://picsum.photos/seed/avatar1/150/150",
+      "imageHint": "user profile"
+    },
+    {
+      "id": "login-bg",
+      "description": "Abstract indigo background for login screen",
+      "imageUrl": "https://picsum.photos/seed/login/1920/1080",
+      "imageHint": "abstract indigo"
+    }
+  ]
+}
