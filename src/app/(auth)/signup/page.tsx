@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { LayoutDashboard, Lock, Mail, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { CommercePulseLogo } from '@/components/logo';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -19,51 +20,49 @@ export default function SignupPage() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
 
   const handleSignup = async (e: React.FormEvent) => {
-  e.preventDefault()
-  setIsLoading(true)
+    e.preventDefault()
+    setIsLoading(true)
 
-  try {
-    await createUserWithEmailAndPassword(
-      auth,
-      formData.email,
-      formData.password
-    )
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      )
 
-    toast({
-      title: "Account Created",
-      description: "Your account has been created successfully.",
-    })
+      toast({
+        title: "Account Created",
+        description: "Your account has been created successfully.",
+      })
 
-    router.push("/dashboard")
-  } catch (error: any) {
-    toast({
-      variant: "destructive",
-      title: "Signup Failed",
-      description: error.message,
-    })
-  } finally {
-    setIsLoading(false)
+      router.push("/dashboard")
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Signup Failed",
+        description: error.message,
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
-}
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-background p-4">
-      <div 
+      <div
         className="absolute inset-0 z-0 opacity-50"
-        style={{ 
-          backgroundImage: 'url(https://picsum.photos/seed/login/1920/1080)', 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center', 
-          filter: 'blur(8px)' 
+        style={{
+          backgroundImage: 'url(https://picsum.photos/seed/login/1920/1080)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(8px)'
         }}
       />
 
       <Card className="w-full max-w-md z-10 shadow-xl border-t-4 border-t-primary bg-card/90 backdrop-blur-sm">
         <CardHeader className="space-y-1 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="h-12 w-12 rounded-xl bg-primary flex items-center justify-center text-primary-foreground">
-              <LayoutDashboard size={24} />
-            </div>
+          <div className="flex justify-center mb-6">
+            <CommercePulseLogo size={48} className="scale-125" />
           </div>
           <CardTitle className="text-2xl font-bold font-headline">Create an account</CardTitle>
           <CardDescription>Enter your details to get started with CommercePulse</CardDescription>
@@ -74,11 +73,11 @@ export default function SignupPage() {
               <Label htmlFor="name">Full Name</Label>
               <div className="relative">
                 <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input 
-                  id="name" 
-                  placeholder="John Doe" 
+                <Input
+                  id="name"
+                  placeholder="John Doe"
                   className="pl-10 bg-background/70"
-                  required 
+                  required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
@@ -88,12 +87,12 @@ export default function SignupPage() {
               <Label htmlFor="email">Email</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input 
-                  id="email" 
-                  placeholder="name@example.com" 
-                  type="email" 
+                <Input
+                  id="email"
+                  placeholder="name@example.com"
+                  type="email"
                   className="pl-10 bg-background/70"
-                  required 
+                  required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -103,11 +102,11 @@ export default function SignupPage() {
               <Label htmlFor="password">Password</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input 
-                  id="password" 
-                  type="password" 
+                <Input
+                  id="password"
+                  type="password"
                   className="pl-10 bg-background/70"
-                  required 
+                  required
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />

@@ -15,14 +15,14 @@ export default function ProfilePage() {
                 <User size={16} />
                 Full Name
               </label>
-              <input id="fullName" defaultValue="Admin User" className="w-full bg-secondary/50 p-2 rounded-lg border focus:border-primary transition-colors" />
+              <input id="fullName" defaultValue="User" className="w-full bg-secondary/50 p-2 rounded-lg border focus:border-primary transition-colors" />
             </div>
             <div className="space-y-2">
               <label className="font-medium flex items-center gap-2" htmlFor="email">
                 <Mail size={16} />
                 Email Address
               </label>
-              <input id="email" type="email" defaultValue="admin@commercepulse.com" className="w-full bg-secondary/50 p-2 rounded-lg border focus:border-primary transition-colors" />
+              <input id="email" type="email" defaultValue="user@commercepulse.com" className="w-full bg-secondary/50 p-2 rounded-lg border focus:border-primary transition-colors" />
             </div>
             <div className="space-y-2">
               <label className="font-medium flex items-center gap-2" htmlFor="phone">

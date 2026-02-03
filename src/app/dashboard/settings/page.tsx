@@ -1,7 +1,18 @@
 
+"use client";
+
 import { Bell, User, Shield, Palette } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function SettingsPage() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold">Settings</h1>
@@ -32,12 +43,45 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-medium flex items-center gap-2"><Palette size={16} /> Theme</h3>
-              <p className="text-muted-foreground text-sm">Choose between light and dark mode.</p>
+              <p className="text-muted-foreground text-sm">Choose between light, dark, and system mode.</p>
             </div>
-            <div className="flex items-center gap-2">
-              <button className="px-4 py-2 rounded-lg bg-secondary">Light</button>
-              <button className="px-4 py-2 rounded-lg">Dark</button>
-            </div>
+            {mounted ? (
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setTheme("light")}
+                  className={`px-4 py-2 rounded-lg transition-colors ${theme === "light"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary hover:bg-secondary/80"
+                    }`}
+                >
+                  Light
+                </button>
+                <button
+                  onClick={() => setTheme("dark")}
+                  className={`px-4 py-2 rounded-lg transition-colors ${theme === "dark"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary hover:bg-secondary/80"
+                    }`}
+                >
+                  Dark
+                </button>
+                <button
+                  onClick={() => setTheme("system")}
+                  className={`px-4 py-2 rounded-lg transition-colors ${theme === "system"
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary hover:bg-secondary/80"
+                    }`}
+                >
+                  System
+                </button>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 opacity-50">
+                <button className="px-4 py-2 rounded-lg bg-secondary">Light</button>
+                <button className="px-4 py-2 rounded-lg bg-secondary">Dark</button>
+                <button className="px-4 py-2 rounded-lg bg-secondary">System</button>
+              </div>
+            )}
           </div>
         </div>
       </div>
